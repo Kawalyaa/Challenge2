@@ -17,9 +17,9 @@ def get_order(name):
             return jsonify({'order':langs[0]})
 @app.route('/place_order',methods=['POST'])
 def place_order():
-    language = {'name':request.json['name']}
-    orders.append(language) 
-    return jsonify({'languages':orders})
+    order = {'name':request.json['name']}
+    orders.append(order) 
+    return jsonify({'orders':orders})
 
 @app.route('/update_order/<string:name>',methods=['PUT'])
 def update_order(name):
@@ -31,7 +31,7 @@ def update_order(name):
 def remove_item(name):  
     langs=[order for order in orders if order['name']==name]
     orders.remove(langs[0])  
-    return jsonify({'languages':orders})
+    return jsonify({'orders':orders})
 
     
 if __name__ == "__main__":
